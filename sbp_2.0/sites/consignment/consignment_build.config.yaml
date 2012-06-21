@@ -1,0 +1,41 @@
+sourcecode_urls: 
+    - 'https://007.5173.com/svn/SourceCode/ConsignmentTrading/Dev/jsdev'
+sourcecode_dirs: 
+    - sourcecode
+
+#sourcecode_username: 301645
+#sourcecode_password: //5173@#q
+#product_username: 301645
+#product_password: //5173@#q
+#online_username: zhangyfsh
+#online_password: hjqipS5u95
+
+build_batch: 'sourcecode\BuildTools\Build.bat'
+GetVersion: 'sourcecode\BuildTools\GetVersion.exe'
+
+sites:
+    consignment:
+        product_url: 'https://192.168.140.28/svn_product/consignmentsites/trunk/consignment'
+        product_dir: 'product\consignment'
+        online_url: 'https://subversion.5173.com/WEB/C2CCON1'
+        online_dir: 'online\consignment'
+        site_dir: 'sourcecode\ConsignmentUI'
+        copy_bat: 'sourcecode\BuildTools\UICopy.bat'
+        config: Config
+        web_config:
+            config_test: Web.config
+            config_online: Web.config
+            online: Web.config
+
+    vjsadmin:
+        product_url: 'https://192.168.140.28/svn_product/consignmentsites/trunk/vjsadmin'
+        product_dir: 'product\vjsadmin'
+        online_url: 'https://subversion.5173.com/WEB/C2CVJS1'
+        online_dir: 'online\vjsadmin'
+        site_dir: 'sourcecode\AdminMainConsignmentUi'
+        copy_bat: 'sourcecode\BuildTools\AdminUiCopy.bat'
+        config: config
+        web_config:
+            config_test: Web.config
+            config_online: Web.config
+            online: Web.config

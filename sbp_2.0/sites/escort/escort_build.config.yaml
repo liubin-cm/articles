@@ -1,0 +1,41 @@
+sourcecode_urls: 
+    - 'https://007.5173.com/svn/SourceCode/EscortTrading/Dev/EscortDev'
+sourcecode_dirs: 
+    - sourcecode
+
+#sourcecode_username: 301645
+#sourcecode_password: //5173@#q
+#product_username: 301645
+#product_password: //5173@#q
+#online_username: zhangyfsh
+#online_password: hjqipS5u95
+
+build_batch: 'sourcecode\BuildTools\EscortBuild.bat'
+GetVersion: 'sourcecode\BuildTools\GetVersion.exe'
+
+sites:
+    escort:
+        product_url: 'https://192.168.140.28/svn_product/escortsites/trunk/escort'
+        product_dir: 'product\escort'
+        online_url: 'https://subversion.5173.com/WEB/C2CE1/'
+        online_dir: 'online\escort'
+        site_dir: 'sourcecode\EscortUI'
+        copy_bat: 'sourcecode\BuildTools\EscortUICopy.bat'
+        config: Config
+        web_config:
+            config_test: web.config
+            config_online: web.config
+            online: Web.config
+
+    vdbadmin:
+        product_url: 'https://192.168.140.28/svn_product/escortsites/trunk/vdbadmin'
+        product_dir: 'product\vdbadmin'
+        online_url: 'https://subversion.5173.com/WEB/C2CVDB1/'
+        online_dir: 'online\vdbadmin'
+        site_dir: 'sourcecode\AdminMainEscortUi'
+        copy_bat: 'sourcecode\BuildTools\AdminMainEscortUiCopy.bat'
+        config: config
+        web_config:
+            config_test: web.config
+            config_online: web.config
+            online: Web.config

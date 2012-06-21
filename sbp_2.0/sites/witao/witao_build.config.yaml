@@ -1,0 +1,41 @@
+sourcecode_urls: 
+    - 'https://192.168.140.28/svn/DKJG/Dev/Task'
+sourcecode_dirs: 
+    - sourcecode
+
+#sourcecode_username: 301645
+#sourcecode_password: //5173@#q
+#product_username: 301645
+#product_password: //5173@#q
+#online_username: zhangyfsh
+#online_password: hjqipS5u95
+
+build_batch: 'sourcecode\BuildTools\51TaoBuild.bat'
+GetVersion: 'sourcecode\BuildTools\GetVersion.exe'
+
+sites:
+    51tao:
+        product_url: 'https://192.168.140.28/svn_product/51taosites/trunk/51tao'
+        product_dir: 'product\51tao'
+        online_url: 'https://subversion.5173.com/WEB/51TAO.5173.COM'
+        online_dir: 'online\51tao'
+        site_dir: 'sourcecode\Task.WebUI'
+        copy_bat: 'sourcecode\BuildTools\51taocopy.bat'
+        config: Config
+        web_config:
+            config_test: 'web.config.txt'
+            config_online: 'web.config.txt'
+            online: 'Web.config'
+
+    v51taoadmin:
+        product_url: 'https://192.168.140.28/svn_product/51taosites/trunk/v51taoadmin'
+        product_dir: 'product\v51taoadmin'
+        online_url: 'https://subversion.5173.com/WEB/V51TAOADMIN.5173.COM'
+        online_dir: 'online\v51taoadmin'
+        site_dir: 'sourcecode\Task.Admin'
+        copy_bat: 'sourcecode\BuildTools\v51taocopy.bat'
+        config: config
+        web_config:
+            config_test: 'web.config.txt'
+            config_online: 'web.config.txt'
+            online: 'Web.config'

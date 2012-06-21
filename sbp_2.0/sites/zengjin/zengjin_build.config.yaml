@@ -1,0 +1,41 @@
+sourcecode_urls: 
+    - 'https://007.5173.com/svn/SourceCode/FanLi/Dev/Rebate'
+sourcecode_dirs: 
+    - sourcecode
+
+#sourcecode_username: 301645
+#sourcecode_password: //5173@#q
+#product_username: 301645
+#product_password: //5173@#q
+#online_username: '301645'
+#online_password: '//5173@#q'
+
+build_batch: 'sourcecode\BuildTools\ZengjinBuild.bat'
+GetVersion: 'sourcecode\BuildTools\GetVersion.exe'
+
+sites:
+    zengjin:
+        product_url: 'https://192.168.140.28/svn_product/zengjinsites/trunk/zengjin'
+        product_dir: 'product\zengjin'
+        online_url: 'https://subversion.5173.com/WEB/ZENGJIN.5173.COM'
+        online_dir: 'online\zengjin'
+        site_dir: 'sourcecode\Rebate.Core.WebSite\WebSite'
+        copy_bat: 'sourcecode\BuildTools\ZengjinCopy.bat'
+        config: Config
+        web_config:
+            config_test: 'web.config.txt'
+            config_online: 'web.config.txt'
+            online: 'web.config'
+
+    vzengjin:
+        product_url: 'https://192.168.140.28/svn_product/zengjinsites/trunk/vzengjin'
+        product_dir: 'product\vzengjin'
+        online_url: 'https://subversion.5173.com/WEB/VZENGJIN.5173.COM'
+        online_dir: 'online\vzengjin'
+        site_dir: 'sourcecode\Rebate.Core.WebSite\AdminWebSite'
+        copy_bat: 'sourcecode\BuildTools\VZengjinCopy.bat'
+        config: config
+        web_config:
+            config_test: 'web.config.txt'
+            config_online: 'web.config.txt'
+            online: 'web.config'

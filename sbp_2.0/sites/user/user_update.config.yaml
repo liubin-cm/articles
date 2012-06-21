@@ -1,0 +1,7 @@
+product_url: 'https://192.168.140.28/svn_product/usersite'
+product_tag_dir: 'tag'
+product_trunk_dir: 'trunk'
+online_site_path: 'D:\user.5173.com_new'
+app_pool: 'user.5173.com'
+website_verified_url: 'http://user.5173.com/html/F5/f5.aspx'
+verified_keyword: 'OK'

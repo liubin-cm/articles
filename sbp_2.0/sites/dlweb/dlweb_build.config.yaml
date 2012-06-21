@@ -1,0 +1,41 @@
+sourcecode_urls: 
+    - 'https://007.5173.com/svn/SourceCode/DLTrading/Dev/dldev'
+sourcecode_dirs: 
+    - sourcecode
+
+sourcecode_username: '200265'
+sourcecode_password: 'good198696!@'
+#product_username: 301645
+#product_password: //5173@#q
+#online_username: zhangyfsh
+#online_password: hjqipS5u95
+
+build_batch: 'sourcecode\BuildTools\Build.bat'
+GetVersion: 'sourcecode\BuildTools\GetVersion.exe'
+
+sites:
+    dlweb:
+        product_url: 'https://192.168.140.28/svn_product/dlwebsites/trunk/DLC2C'
+        product_dir: 'product\dlweb'
+        online_url: 'https://subversion.5173.com/WEB/DLC2C/'
+        online_dir: 'online\dlweb'
+        site_dir: 'sourcecode\dlweb'
+        copy_bat: 'sourcecode\BuildTools\DlWebCopy.bat'
+        config: config
+        web_config:
+            config_test: web.config
+            config_online: web.config
+            online: Web.config
+
+    dlwebadmin:
+        product_url: 'https://192.168.140.28/svn_product/dlwebsites/trunk/DLC2CADMIN'
+        product_dir: 'product\dlwebadmin'
+        online_url: 'https://subversion.5173.com/WEB/DLC2CADMIN/'
+        online_dir: 'online\dlwebadmin'
+        site_dir: 'sourcecode\dlwebadmin'
+        copy_bat: 'sourcecode\BuildTools\DlWebAdminCopy.bat'
+        config: config
+        web_config:
+            config_test: web.config
+            config_online: web.config
+            online: Web.config

@@ -1,0 +1,41 @@
+sourcecode_urls: 
+    - 'https://007.5173.com/svn/SourceCode/GameIDTrading/Dev/iddev'
+sourcecode_dirs: 
+    - sourcecode
+
+#sourcecode_username: 301645
+#sourcecode_password: //5173@#q
+#product_username: 301645
+#product_password: //5173@#q
+#online_username: zhangyfsh
+#online_password: hjqipS5u95
+
+build_batch: 'sourcecode\BuildTools\Build.bat'
+GetVersion: 'sourcecode\BuildTools\GetVersion.exe'
+
+sites:
+    gameid:
+        product_url: 'https://192.168.140.28/svn_product/gameidsites/trunk/gameid'
+        product_dir: 'product\gameid'
+        online_url: 'https://subversion.5173.com/WEB/GAMEID1'
+        online_dir: 'online\gameid'
+        site_dir: 'sourcecode\GameIdUI'
+        copy_bat: 'sourcecode\BuildTools\UICopy.bat'
+        config: config
+        web_config:
+            config_test: web.config
+            config_online: web.config
+            online: Web.config
+
+    vidadmin:
+        product_url: 'https://192.168.140.28/svn_product/gameidsites/trunk/vidadmin'
+        product_dir: 'product\vidadmin'
+        online_url: 'https://subversion.5173.com/WEB/C2CVID1'
+        online_dir: 'online\vidadmin'
+        site_dir: 'sourcecode\AdminMainIdUi'
+        copy_bat: 'sourcecode\BuildTools\AdminUiCopy.bat'
+        config: config
+        web_config:
+            config_test: web.config
+            config_online: web.config
+            online: Web.config
