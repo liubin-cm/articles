@@ -126,7 +126,7 @@ class pysvn(object):
     def clear_workingcopy(path):
         lines = pysvn.st(path)
         for line in lines:
-            varpath = line.strip().split()[-1].strip()
+            varpath = line.strip().split('    ')[-1].strip()
             if line.find('?') == 0 or line.find('A') == 0 :
                 if line.find('A') == 0 :
                     pysvn.py_cmd.command_str = 'svn revert "' + varpath + '"'
