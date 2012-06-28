@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<PropertyGroup>
+		<!--DllFolder>DLL\</DllFolder-->
+		<UIName>FostSecurityWeb</UIName>
+		<AdminName>FostSecurityAdminWeb</AdminName>
+	</PropertyGroup>
+	<ItemGroup>
+		<UIDeletedFiles Include="scm_test.xml"/>
+		<UIDeletedDirs Include="scm_test"/>
+		<AdminUiDeletedFiles Include="scm_test.xml"/>
+		<AdminUiDeletedDirs Include="scm_test"/>
+	</ItemGroup>
+	<ItemGroup>
+		<UIHidenDirs Include="scmui"/>
+		<UIHidenFiles Include="scmui.xml"/>
+	</ItemGroup>
+	<ItemGroup>
+		<AdminUiHidenDirs Include="scmui"/>
+		<AdminUiHidenFiles Include="scmui.xml"/>
+	</ItemGroup>
+	<Import Project="DevUpdate.targets" />
+	<ItemGroup>
+		<ProjectFiles Include="FostPasspod\FostPasspod.csproj"/>
+		<ProjectFiles Include="FostSecurity\FostSecurity.csproj"/>
+		<ProjectFiles Include="FostSecurityAdmin\FostSecurityAdmin.csproj"/>
+		<ProjectFiles Include="FostSecurityPayment\FostSecurityPayment.csproj"/>
+		<ProjectFiles Include="FostSecurityServer\FostSecurityServer.csproj"/>
+		<ProjectFiles Include="FostSecurityData\FostSecurityData.csproj"/>
+		<ProjectFiles Include="FostSecurityExtensions\FostSecurityExtensions.csproj"/>
+		<ProjectFiles Include="FostSecurityValidation\FostSecurityValidation.csproj"/>
+		<ProjectFiles Include="FostSecurityWeb\FostSecurityWeb.csproj"/>
+		<ProjectFiles Include="FostSecurityAdminWeb\FostSecurityAdminWeb.csproj"/>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectFiles_config Include="FostPasspod\packages.config"/>
+		<ProjectFiles_config Include="FostSecurity\packages.config"/>
+		<ProjectFiles_config Include="FostSecurityAdmin\packages.config"/>
+		<ProjectFiles_config Include="FostSecurityData\packages.config"/>
+		<ProjectFiles_config Include="FostSecurityExtensions\packages.config"/>
+		<ProjectFiles_config Include="FostSecurityPayment\packages.config"/>
+		<ProjectFiles_config Include="FostSecurityServer\packages.config"/>		
+		<ProjectFiles_config Include="FostSecurityValidation\packages.config"/>
+		<ProjectFiles_config Include="FostSecurityWeb\packages.config"/>
+		<ProjectFiles_config Include="FostSecurityAdminWeb\packages.config"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackagesFiles Include="$(PackagesFolder)**\*.dll" />
+    </ItemGroup>
+	<Target Name="GetMSBuildProjectParentDirectory">
+		<!-- First you create the MSBuildProject Parent directory Item -->
+		<CreateItem Include="$(MSBuildProjectDirectory)\..\">
+			<Output ItemName="MSBuildParentDirectory" TaskParameter="Include"/>
+		</CreateItem>
+
+		<!-- Create a property based on parent fullpath-->
+		<CreateProperty Value="%(MSBuildParentDirectory.Fullpath)">
+			<Output PropertyName="RootFolder" TaskParameter="Value"/>
+		</CreateProperty>
+	</Target>
+	<Target Name="BeforeBuild" DependsOnTargets="GetMSBuildProjectParentDirectory">
+	<!--	<Exec Command="svn revert -R $(RootFolder)$(DllFolder)"/>
+		<Exec Command="svn propset svn:externals -F DllRefrences.config $(RootFolder)$(DllFolder)"/>
+		<Exec Command="svn up $(RootFolder)$(DllFolder)"/> -->
+		<!--RemoveDir Directories="$(PackagesFolder)"/-->
+		<Exec Command="nuget install %(ProjectFiles_config.Identity) -source 5173_app -o $(RootFolder)packages" WorkingDirectory="$(RootFolder)"/>
+		<!--Copy SourceFiles="@(PackagesFiles)" DestinationFolder="$(RootFolder)$(DllFolder)"/-->
+	</Target>	
+	<Target Name="Build" DependsOnTargets="GetMSBuildProjectParentDirectory;BeforeBuild">
+		<MSBuild Projects="@(ProjectFiles->'$(RootFolder)%(RelativeDir)%(Filename)%(Extension)')"
+		Targets="Build"
+		Properties="Configuration=Release"/>
+	</Target>
+	<Target Name="ReBuild" DependsOnTargets="GetMSBuildProjectParentDirectory;BeforeBuild">
+		<MSBuild Projects="@(ProjectFiles->'$(RootFolder)%(RelativeDir)%(Filename)%(Extension)')"
+		Targets="ReBuild"
+		Properties="Configuration=Release"/>
+	</Target>
+	<ItemGroup>
+    <!-- Get all files under src\ except svn files -->
+		<UIConfigTestFiles Include="$(UIName)\Config_test\**\*"/>
+		<AdminUIConfigTestFiles Include="$(AdminName)\Config_test\**\*"/>
+    </ItemGroup>
+	<Target Name="Copy" DependsOnTargets="GetMSBuildProjectParentDirectory">
+		<!-- $(DestDir) should be with \ -->
+		<Message Text="$(DestDir)"/>
+		<Exec Command="attrib +H %(UIHidenDirs.Identity)\*.* /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(UIName)"/>
+		<Exec Command="attrib +H %(UIHidenFiles.Identity) /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(UIName)"/>
+		<Exec Command="robocopy.exe $(RootFolder)$(UIName) $(DestDir) /xa:H /XD $(UIIgonreDirs) /XF $(UIIgonreFiles) /S" IgnoreExitCode="true" WorkingDirectory=""/>
+		<Exec Command="robocopy.exe $(RootFolder)$(UIName)\bin $(DestDir)\bin /XF $(UIIgonreDlls) *.xml *.config /S" IgnoreExitCode="true" WorkingDirectory=""/>
+		<Exec Command="robocopy.exe $(RootFolder)$(UIName)\Config_test\ $(DestDir)\ /S" IgnoreExitCode="true" WorkingDirectory=""/>
+		<!--Copy SourceFiles="@(UIConfigTestFiles->'$(RootFolder)%(RelativeDir)%(RecursiveDir)%(Filename)%(Extension)')" DestinationFiles="@(UIConfigTestFiles->'$(DestDir)%(RecursiveDir)%(Filename)%(Extension)'"/-->
+		<Delete Files="@(UIDeletedFiles->'$(DestDir)%(RelativeDir)%(Filename)%(Extension)')" />
+		<RemoveDir Directories="@(UIDeletedDirs->'$(DestDir)%(Identity)')" />
+		<Exec Command="attrib -H %(UIHidenDirs.Identity)\*.* /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(UIName)"/>
+		<Exec Command="attrib -H %(UIHidenFiles.Identity) /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(UIName)"/>
+	</Target>
+	<Target Name="VCopy" DependsOnTargets="GetMSBuildProjectParentDirectory">
+		<Exec Command="attrib +H %(AdminUiHidenDirs.Identity)\*.* /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(AdminName)"/>
+		<Exec Command="attrib +H %(AdminUiHidenFiles.Identity) /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(AdminName)"/>
+		<Exec Command="robocopy.exe $(RootFolder)$(AdminName) $(DestDir) /xa:H /XD $(AdminUiIgonreDirs) /XF $(AdminUiIgonreFiles) /S" IgnoreExitCode="true" WorkingDirectory=""/>
+		<Exec Command="robocopy.exe $(RootFolder)$(AdminName)\bin $(DestDir)\bin /XF $(AdminUiIgonreDlls) *.xml *.config /S" IgnoreExitCode="true" WorkingDirectory=""/>
+		<Exec Command="robocopy.exe $(RootFolder)$(AdminName)\Config_test\ $(DestDir)\ /S" IgnoreExitCode="true" WorkingDirectory=""/>
+		<!--Copy SourceFiles="@(AdminUIConfigTestFiles->'$(RootFolder)%(RelativeDir)%(RecursiveDir)%(Filename)%(Extension)')" DestinationFiles="@(AdminUIConfigTestFiles->'$(DestDir)%(RecursiveDir)%(Filename)%(Extension)'"/-->
+		<Delete Files="@(AdminUiDeletedFiles->'$(DestDir)%(RelativeDir)%(Filename)%(Extension)')" />
+		<RemoveDir Directories="@(AdminUiDeletedDirs->'$(DestDir)%(Identity)')" />
+		<Exec Command="attrib -H %(AdminUiHidenDirs.Identity)\*.* /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(AdminName)"/>
+		<Exec Command="attrib -H %(AdminUiHidenFiles.Identity) /S /D" IgnoreExitCode="true" WorkingDirectory="$(RootFolder)$(AdminName)"/>
+	</Target>
+</Project>

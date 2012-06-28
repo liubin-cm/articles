@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+	<PropertyGroup>
+		<UIIgonreDirs>.svn _svn packages obj config Properties license Config_online Config_test log bin aspnet_client</UIIgonreDirs>
+		<UIIgonreFiles>*.suo* *.resx *.cs *.sln *.csproj.* packages.config *.pdb *.resx *.template Web.config fost.version</UIIgonreFiles>
+		<UIIgonreDlls>*.pdb</UIIgonreDlls>
+		
+		<AdminUiIgonreDirs>.svn _svn packages obj config Properties license Config_online log bin aspnet_client Config_test</AdminUiIgonreDirs>
+		<AdminUiIgonreFiles>*.suo* *.resx *.cs *.sln *.csproj.* packages.config *.pdb *.resx *.template Web.config</AdminUiIgonreFiles>
+		<AdminUiIgonreDlls>*.pdb</AdminUiIgonreDlls>
+	</PropertyGroup>
+	<ItemGroup>
+		<UIHidenDirs Include="Views\ST\Security\Fost"/>
+		<UIHidenDirs Include="Contents\Tpm"/>
+		<UIHidenDirs Include="Contents\Scripts\jQuery"/>
+		<UIHidenDirs Include="Views\ST\Security\288"/>
+		<UIHidenFiles Include="Views\ST\Security\Captcha.st"/>
+		<UIHidenFiles Include="Views\ST\Shared\SiteMaster.DebugDev.st"/>
+		<UIHidenFiles Include="Views\ST\Security\Passport\Captcha.st"/>
+		<UIHidenFiles Include="Views\ST\Security\Shared\BindMobile.st"/>
+		<UIHidenFiles Include="Views\ST\Security\Shared\Captcha.st"/>
+		<UIHidenFiles Include="Views\ST\Security\Shared\ClientDna.st"/>
+		<UIHidenFiles Include="Views\ST\Shared\SiteMaster.ReleaseAaf.st"/>
+		<UIHidenFiles Include="Views\ST\Security\Shared\Mobile.st"/>
+		<UIHidenFiles Include="Views\ST\Security\Shared\PasswordNew.st"/>
+		<UIHidenFiles Include="Views\ST\Shared\SiteMaster.Release.st"/>
+		<UIHidenFiles Include="Views\ST\Shared\SiteMaster.DebugTest.st"/>
+		<UIHidenFiles Include="Views\ST\Shared\SiteMaster.DebugTest.st"/>
+		<UIHidenFiles Include="Views\ST\Shared\SiteMaster.Debug.st"/>
+	</ItemGroup>
+	<ItemGroup>
+		<AdminUiHidenDirs Include="Contents\images"/>
+		<AdminUiHidenDirs Include="Contents\scripts"/>
+		<AdminUiHidenDirs Include="Contents\styles"/>
+		<AdminUiHidenFiles Include="fost.version"/>
+		<AdminUiHidenFiles Include="Views\ST\Shared\SiteMaster.DebugDev.st"/>
+		<AdminUiHidenFiles Include="Views\ST\Shared\SiteMaster.DebugTest.st"/>
+		<AdminUiHidenFiles Include="Views\ST\Shared\SiteMaster.Release.st"/>
+		<AdminUiHidenFiles Include="Views\ST\Shared\SiteMaster.Debug.st"/>
+		<AdminUiHidenFiles Include="Views\ST\Shared\SiteMaster.Release5173.st"/>
+		<AdminUiHidenFiles Include="Views\ST\Payment\Settings.st"/>
+	</ItemGroup>
+	<ItemGroup>
+		<UIDeletedFiles Include="scm_222222.xml"/>
+	</ItemGroup>
+	<ItemGroup>
+		<UIDeletedDirs Include="scm_222222"/>
+	</ItemGroup>
+	<ItemGroup>
+		<AdminUiDeletedFiles Include="scm_33333.xml"/>
+	</ItemGroup>
+	<ItemGroup>
+		<AdminUiDeletedDirs Include="scm_test"/>
+	</ItemGroup>
+</Project>
